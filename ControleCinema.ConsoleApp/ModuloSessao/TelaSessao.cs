@@ -156,5 +156,31 @@ namespace ControleCinema.ConsoleApp.ModuloSessao
             Console.ReadKey();
             return true;
         }
+
+        public bool VisualizarPorFilme(string tipoVisualizacao)
+        {
+            Console.WriteLine("Escolha o filme: ");
+            string filme = Console.ReadLine();
+            List<Sessao> sessoes = repoSessao.SelecionarTodos();
+
+            sessoes.FindAll(f => f.filme.titulo.Equals(filme));
+
+            foreach (Sessao s in sessoes)
+            {
+                Console.WriteLine(
+
+                                   $"ID...................: {s.id}\n\r" +
+                                   $"Filme................: {s.filme}\n\r" +
+                                   $"Sala.................: {s.sala}\n\r" +
+                                   $"Número de Ingressos..: {s.numMaxIngressos}\n\r" +
+                                   $"Genero...............: {s.horario}\n\r" +
+                                   $"Genero...............: {s.ingresso.numAssento}\n\r" +
+                                   $"Genero...............: {s.estaEncerrada}\n\r"
+
+                                 );
+            }
+
+            return true;
+        }
     }
 }
